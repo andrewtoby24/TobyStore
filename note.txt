@@ -1,0 +1,4 @@
+Starting Laravel Project
+
+- Create Github Repo
+- Create Laravel Project in htdocs
