@@ -19,8 +19,10 @@ class OrderFactory extends Factory
         return [
             'voucher_no' => $this->faker->ean8,
             'total' => $this->faker->numberBetween(200000, 300000),
-            'qty' => $this->faker->randomDigit,
+            'qty' => rand(1,10),
             'payment_slip' => $this->faker->imageUrl,
+            'status'=> $this->faker->word,
+            'note'=> $this->faker->paragraph,
             'item_id' => rand(1, 20),
             'payment_id' => rand(1,5),
             'user_id' => rand(1,2)

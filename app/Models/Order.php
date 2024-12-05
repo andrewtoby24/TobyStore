@@ -16,6 +16,8 @@ class Order extends Model
         'total',
         'qty',
         'payment_slip',
+        'status',
+        'note',
         'item_id',
         'payment_id',
         'user_id'
