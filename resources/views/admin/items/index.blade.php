@@ -12,7 +12,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                                Items List
+                            Items List
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered text-center">
@@ -20,8 +20,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Code No</th>
-                                        <th>Name</th>
+                                        <th>Item Name</th>
                                         <th>Price</th>
+                                        <th>Discount</th>
                                         <th>InStock</th>
                                         <th>Category</th>
                                         <th>#</th>
@@ -31,8 +32,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Code No</th>
-                                        <th>Name</th>
+                                        <th>Item Name</th>
                                         <th>Price</th>
+                                        <th>Discount</th>
                                         <th>InStock</th>
                                         <th>Category</th>
                                         <th>#</th>
@@ -43,18 +45,19 @@
                                         $i = 1;
                                     @endphp
                                     @foreach($items as $item)
-                                        <tr>
-                                            <td>{{$i++}}</td>
-                                            <td>{{$item->code_no}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->price}}</td>
-                                            <td>{{$item->in_stock}}</td>
-                                            <td>{{$item->category_id}}</td>
-                                            <td>
-                                                <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{$i++}}</td>
+                                        <td>{{$item->code_no}}</td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->price}}</td>
+                                        <td>{{$item->discount}}</td>
+                                        <td>{{$item->in_stock}}</td>
+                                        <td>{{$item->category_id}}</td>
+                                        <td>
+                                            <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>

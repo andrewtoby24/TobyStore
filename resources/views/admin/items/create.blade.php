@@ -16,13 +16,14 @@
                                 Items List
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{route('backend.items.store')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Code No</label>
                                     <input type="text" class="form-control" id="code_no" name="code_no">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Name</label>
+                                    <label for="title" class="form-label">Item Name</label>
                                     <input type="text" class="form-control" id="name" name="name">
                                 </div>
                                 <div class="mb-3">
@@ -40,13 +41,17 @@
                                 <div class="mb-3">
                                     <label for="in_stock" class="form-label">In Stock</label>
                                     <select class="form-select" name="in_stock" id="in_stock">
-                                        <option selected>Yes</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="category_id" class="form-label">Category</label>
                                     <select class="form-select" name="category_id" id="category_id">
-                                        <option selected>Choose Category</option>
+                                        <option value="">Choose Category</option>
+                                        @foreach ($categories as $category )
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
