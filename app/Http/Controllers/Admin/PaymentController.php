@@ -4,19 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Item;
-use App\Models\Category;
-use App\Http\Requests\ItemRequest;
+use App\Models\Payment;
 
-class ItemController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = Item::orderBy('id', 'DESC')->paginate(15);
-        return view('admin.items.index', compact('items'));
+        $payments = Payment::orderBy('id','DESC')->paginate(5);
+        return view('admin.payments.index', compact('payments'));
     }
 
     /**
@@ -24,28 +22,19 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.items.create', compact('categories'));
+        return view('admin.payments.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ItemRequest $request)
+    public function store(Request $request)
     {
         // dd($request);
-        $items = Item::create($request->all());
+        $payments = Payment::create($request->all());
+        $payments->save();
 
-        // file upload;
-        $file_name = time().'.'.$request->image->extension(); //213234234.png (time = file upload time / extension = jpg|jpeg|webp)
-        $upload = $request->image->move(public_path('images/items/'),$file_name);
-        if($upload){
-            $items->image = "/images/items/".$file_name;
-        }
-
-        $items->save();
-
-        return redirect()->route('backend.items.index');
+        return redirect()->route('backend.payments.index');
     }
 
     /**
